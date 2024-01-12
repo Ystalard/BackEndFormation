@@ -14,5 +14,8 @@ It consists in generating the unitary test to validate the implementation (the u
 
 ORM for Object Relational Mapping
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/45380884-de47-4a16-a8a3-4de46e7aadc1)
-The ORM is like a translator between object of the application (in C#) to the database.
+The ORM is like a translator between object of the application (in C#) to the database (DB).
 The ORM is like a cache, if nothing is saved on the database before stopping the application then any cached modification would be lost 
+The ORM needs a provider in order to understand the language used by the DB.
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/6c43f5d9-6826-41d8-a730-1104dcffd44c)
+
