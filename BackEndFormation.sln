@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndFormation", "BackEndFormation.csproj", "{6B444B2E-E4D3-42A1-B150-DB3516A0961E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndFormation", "BackEndFormation\BackEndFormation.csproj", "{6B444B2E-E4D3-42A1-B150-DB3516A0961E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndFormationTests", "..\BackEndFormationTests\BackEndFormationTests.csproj", "{6EC1A0C3-8047-49A6-8109-0F54A8769E32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndFormationTests", "BackEndFormationTests\BackEndFormationTests.csproj", "{6EC1A0C3-8047-49A6-8109-0F54A8769E32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
