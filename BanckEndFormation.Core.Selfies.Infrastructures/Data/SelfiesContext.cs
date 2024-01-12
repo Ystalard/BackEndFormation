@@ -1,4 +1,5 @@
 ﻿using BackEndFormation.Core.Selfies.Domain;
+using BackEndFormation.Core.Selfies.Infrastructures.Data.TypeConfigurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace BanckEndFormation.Core.Selfies.Infrastructures.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new SelfieEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new WookieEntityTypeConfiguration());
         }
         #endregion
 
