@@ -14,7 +14,7 @@ namespace BackEndFormation.Controllers
         {
             var model = Enumerable.Range(1, 10).Select(item => new Selfie() { Id = item });
 
-            return this.NotFound(model);
+            return this.Ok(model);
         }
         #endregion
     }
