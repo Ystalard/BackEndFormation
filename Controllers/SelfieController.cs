@@ -7,5 +7,14 @@ namespace BackEndFormation.Controllers
     [ApiController]
     public class SelfieController : ControllerBase
     {
+        #region public methods
+        [HttpGet]
+        public IEnumerable<Selfie> Get()
+        {
+            return Enumerable.Range(1, 10).Select(item => new Selfie() { Id = item });
+        }
+        #endregion
     }
+
+    
 }
