@@ -1,6 +1,6 @@
 # BackEndFormation
 
-This porject will follow the udemy formation at https://www.udemy.com/course/maitriser-web-api-rest-avec-aspnet-core-dotnet-50-full
+This project will follow the udemy formation at https://www.udemy.com/course/maitriser-web-api-rest-avec-aspnet-core-dotnet-50-full
 
 This is a wep api rest project in asp.net.
 
@@ -18,4 +18,13 @@ The ORM is like a translator between object of the application (in C#) to the da
 The ORM is like a cache, if nothing is saved on the database before stopping the application then any cached modification would be lost 
 The ORM needs a provider in order to understand the language used by the DB.
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/6c43f5d9-6826-41d8-a730-1104dcffd44c)
+
+Creation of the Database
+1.Install SQl Server Developer https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads
+2.Install SQL Server Management Studio (SSMS)
+3.Open SSMS (it must propose to connect to your sql server express which must be running, otherwise open SQL Server and configure it)
+4.Create a new DB:
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/6cf6c604-f9f7-4dee-8151-a133601b537d)
+5.Insert the DB name and press Ok
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/e1580e9a-3ead-415d-94ca-a305bf8065af)
 
