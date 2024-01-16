@@ -1,4 +1,5 @@
 ﻿using BackEndFormation.Core.Selfies.Domain;
+using BanckEndFormation.Core.Selfies.Infrastructures.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,13 +9,20 @@ namespace BackEndFormation.Controllers
     [ApiController]
     public class SelfieController : ControllerBase
     {
+        #region Fields
+        private readonly SelfiesContext? _context = null;
+        #endregion
+        #region Constructor
+        public SelfieController(SelfiesContext context) => this._context = context;
+        #endregion
+
         #region public methods
         [HttpGet]
         public IActionResult Get()
         {
-            var model = Enumerable.Range(1, 10).Select(item => new Selfie() { Id = item });
-
-            return this.Ok(model);
+            var query = from Wookie in this._context?.Selfies
+                        select Wookie;
+            return this.Ok(query.ToList());
         }
         #endregion
     }

@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace BanckEndFormation.Core.Selfies.Infrastructures.Data
 {
-    public class SelfiesContext : DbContext
+    public class SelfiesContext(DbContextOptions options) : DbContext(options)
     {
+        #region Constructors
+       
+        #endregion
         #region Internal methods
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
