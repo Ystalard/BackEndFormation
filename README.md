@@ -20,6 +20,7 @@ The ORM needs a provider in order to understand the language used by the DB.
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/6c43f5d9-6826-41d8-a730-1104dcffd44c)
 
 Creation of the Database
+
 1.Install SQl Server Developer https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads
 
 2.Install SQL Server Management Studio (SSMS)
@@ -33,4 +34,24 @@ Creation of the Database
 5.Insert the DB name and press Ok
 
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/e1580e9a-3ead-415d-94ca-a305bf8065af)
+
+Create a new table
+
+1. Create the table
+
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/22b6a39e-bee7-4d3c-93c3-5c49842cce49)
+
+2.Add the Id row and set it as primary key
+
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/4753723a-cb8d-4bed-9cfe-393232fa2980)
+
+3.Change Identity Specification property of Id so that it is Identity
+
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/1af52533-9ad3-49bf-b5c8-3295e52a4695)
+
+4.Name and save the table
+
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d70d92d4-71ff-4a58-8e3a-02716d6fe74e)
+
+
 
