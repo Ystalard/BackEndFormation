@@ -21,10 +21,16 @@ The ORM needs a provider in order to understand the language used by the DB.
 
 Creation of the Database
 1.Install SQl Server Developer https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads
+
 2.Install SQL Server Management Studio (SSMS)
+
 3.Open SSMS (it must propose to connect to your sql server express which must be running, otherwise open SQL Server and configure it)
+
 4.Create a new DB:
+
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/6cf6c604-f9f7-4dee-8151-a133601b537d)
+
 5.Insert the DB name and press Ok
+
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/e1580e9a-3ead-415d-94ca-a305bf8065af)
 
