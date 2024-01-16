@@ -53,5 +53,16 @@ Create a new table
 
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d70d92d4-71ff-4a58-8e3a-02716d6fe74e)
 
+5.Repeat the step until you  created both Selfie and Wookie table and inserted some rows
+
+  a.The Selfie table:
+  
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/834a2f83-82dc-46f6-852d-10c56e032cb9)
+
+  b.The Wookie table:
+
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/e21d8147-9717-42fd-8e3b-01e94d513243)
+
+
 
 
