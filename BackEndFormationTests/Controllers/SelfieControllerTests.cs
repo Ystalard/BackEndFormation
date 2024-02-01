@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BackEndFormation.Core.Selfies.Domain;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BackEndFormation.Controllers.Tests
 {
@@ -23,7 +25,10 @@ namespace BackEndFormation.Controllers.Tests
 
             // assert
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.GetEnumerator().MoveNext());
+            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+
+            OkObjectResult? okResult = result as OkObjectResult;
+            Assert.IsNotNull(okResult?.Value);
         }
         #endregion
     }

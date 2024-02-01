@@ -12,17 +12,19 @@ namespace BackEndFormation.Controllers
     public class SelfieController : ControllerBase
     {
         #region Fields
-        private readonly SelfiesContext _context;
+        private readonly ISelfieRepository _repository;
         #endregion
         #region Constructor
-        public SelfieController(SelfiesContext context) => this._context = context;
+        public SelfieController(ISelfieRepository repository) => _repository = repository;
+
         #endregion
 
         #region public methods
         [HttpGet]
         public IActionResult Get()
         {
-            var model = this._context.Selfies.Include(item => item.Wookie).Select(item => new { item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
+            var selfiesList = this._repository.GetAll();
+            var model = selfiesList.Select(item => new { item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
             return this.Ok(model);
         }
         #endregion
