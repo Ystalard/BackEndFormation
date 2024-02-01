@@ -14,7 +14,7 @@ namespace BackEndFormation.Core.Selfies.Domain
         public required string Surname { get; set; }
 
         [JsonIgnore]
-        public List<Selfie>? Selfies { get; set; }
+        public List<Selfie> Selfies { get; set; } = new List<Selfie>();
         #endregion
     }
 }

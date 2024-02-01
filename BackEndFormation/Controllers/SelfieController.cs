@@ -22,7 +22,7 @@ namespace BackEndFormation.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var model = this._context.Selfies.Include(item => item.Wookie).ToList();
+            var model = this._context.Selfies.Include(item => item.Wookie).Select(item => new { item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
             return this.Ok(model);
         }
         #endregion
