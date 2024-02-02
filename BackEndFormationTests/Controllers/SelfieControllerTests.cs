@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BackEndFormation.Core.Selfies.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
+using BackEndFormation.Application.DTOs;
 
 namespace BackEndFormation.Controllers.Tests
 {
@@ -15,10 +17,18 @@ namespace BackEndFormation.Controllers.Tests
     {
         #region public methods
         [TestMethod()]
-        public void ShouldReturnLisOfSelfies()
+        public void ShouldReturnListOfSelfies()
         {
             //arrange
-            var controller = new SelfieController();
+            var expectedList = new List<Selfie>()
+            {
+                new Selfie {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
+                new Selfie {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
+            };
+
+            var repositoryMock = new Mock<ISelfieRepository>();
+            repositoryMock.Setup(item => item.GetAll()).Returns(expectedList);
+            var controller = new SelfieController(repositoryMock.Object);
 
             //act
             var result = controller.Get();
@@ -28,7 +38,12 @@ namespace BackEndFormation.Controllers.Tests
             Assert.IsInstanceOfType(result, typeof(OkObjectResult));
 
             OkObjectResult? okResult = result as OkObjectResult;
+
             Assert.IsNotNull(okResult?.Value);
+            Assert.IsInstanceOfType<List<SelfieResumeDto>>(okResult?.Value);
+
+            List<SelfieResumeDto>? list = okResult.Value as List<SelfieResumeDto>;
+            Assert.IsTrue(list?.Count == expectedList.Count);
         }
         #endregion
     }

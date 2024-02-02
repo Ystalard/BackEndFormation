@@ -1,4 +1,5 @@
-﻿using BackEndFormation.Core.Selfies.Domain;
+﻿using BackEndFormation.Application.DTOs;
+using BackEndFormation.Core.Selfies.Domain;
 using BanckEndFormation.Core.Selfies.Infrastructures.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace BackEndFormation.Controllers
         public IActionResult Get()
         {
             var selfiesList = this._repository.GetAll();
-            var model = selfiesList.Select(item => new { item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
+            var model = selfiesList.Select(item => new SelfieResumeDto() { Title = item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
             return this.Ok(model);
         }
         #endregion
