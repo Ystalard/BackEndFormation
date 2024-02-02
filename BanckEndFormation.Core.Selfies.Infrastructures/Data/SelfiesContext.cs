@@ -1,4 +1,5 @@
-﻿using BackEndFormation.Core.Selfies.Domain;
+﻿using BackEndFormation.Core.FrameWork;
+using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Data.TypeConfigurations;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BanckEndFormation.Core.Selfies.Infrastructures.Data
 {
-    public class SelfiesContext(DbContextOptions options) : DbContext(options)
+    public class SelfiesContext(DbContextOptions options) : DbContext(options), IUnitOfWork
     {
         #region Internal methods
         protected override void OnModelCreating(ModelBuilder modelBuilder)

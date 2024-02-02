@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A980A877
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEndFormation.Core.Selfies.Infrastructures", "BanckEndFormation.Core.Selfies.Infrastructures\BackEndFormation.Core.Selfies.Infrastructures.csproj", "{C1D841A8-287C-4F1D-A364-063D025F67F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndFormation.Core.FrameWork", "BackEndFormation.Core.FrameWork\BackEndFormation.Core.FrameWork.csproj", "{3159F52E-D84A-4B8E-8D39-EBD1D154C26C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C1D841A8-287C-4F1D-A364-063D025F67F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1D841A8-287C-4F1D-A364-063D025F67F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1D841A8-287C-4F1D-A364-063D025F67F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3159F52E-D84A-4B8E-8D39-EBD1D154C26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3159F52E-D84A-4B8E-8D39-EBD1D154C26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3159F52E-D84A-4B8E-8D39-EBD1D154C26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3159F52E-D84A-4B8E-8D39-EBD1D154C26C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{6EC1A0C3-8047-49A6-8109-0F54A8769E32} = {A980A877-01BF-4025-BE4A-39C9917CE522}
 		{26438767-715E-42BF-BFA5-CFDA8BEC065A} = {26DB7A08-0750-4A17-8D37-D0B6A4115709}
 		{C1D841A8-287C-4F1D-A364-063D025F67F1} = {26DB7A08-0750-4A17-8D37-D0B6A4115709}
+		{3159F52E-D84A-4B8E-8D39-EBD1D154C26C} = {26DB7A08-0750-4A17-8D37-D0B6A4115709}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B9343B5-3DA4-4CCD-91B1-4E3FD2624CDE}

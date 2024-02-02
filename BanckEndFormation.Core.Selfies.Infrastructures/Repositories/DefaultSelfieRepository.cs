@@ -1,4 +1,5 @@
-﻿using BackEndFormation.Core.Selfies.Domain;
+﻿using BackEndFormation.Core.FrameWork;
+using BackEndFormation.Core.Selfies.Domain;
 using BanckEndFormation.Core.Selfies.Infrastructures.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,12 +15,18 @@ namespace BackEndFormation.Core.Selfies.Infrastructures.Repositories
         #region Fields
         private readonly SelfiesContext _context;
         #endregion
+
+        #region Properties
+        public IUnitOfWork UnitOfWork => _context;
+        #endregion
+
         #region Constructors
         public DefaultSelfieRepository(SelfiesContext context)
         {
             _context = context;
         }
         #endregion
+
         #region public methods
         public ICollection<Selfie> GetAll()
         {

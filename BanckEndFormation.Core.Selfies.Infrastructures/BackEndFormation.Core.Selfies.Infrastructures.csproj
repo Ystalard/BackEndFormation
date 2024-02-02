@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BackEndFormation.Core.FrameWork\BackEndFormation.Core.FrameWork.csproj" />
     <ProjectReference Include="..\BackEndFormation.Core.Selfies.Domain\BackEndFormation.Core.Selfies.Domain.csproj" />
   </ItemGroup>
 
