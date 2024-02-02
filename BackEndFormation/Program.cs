@@ -2,6 +2,8 @@ using BackEndFormation.Core.Selfies.Domain;
 using BanckEndFormation.Core.Selfies.Infrastructures.Data;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
 using Microsoft.EntityFrameworkCore;
+using BackEndFormation.ExtensionMethods;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -12,7 +14,7 @@ builder.Services.AddDbContext<SelfiesContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SelfiesDatabase"), sqlOptions => {});
 });
 
-builder.Services.AddScoped<ISelfieRepository, DefaultSelfieRepository>();
+builder.Services.AddInjections();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
