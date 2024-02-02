@@ -22,10 +22,10 @@ namespace BackEndFormation.Controllers.Tests
         {
             //Arrange
             Mock<ISelfieRepository> mockRepository = new();
-            Selfie selfie = new() { Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
+            SelfieDto expectedSelfieDto = new() { Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
             //Act
             var controller = new SelfieController(mockRepository.Object);
-            var result = controller.AddOne(selfie);
+            var result = controller.AddOne(expectedSelfieDto);
 
             //Assert
             Assert.IsNotNull(result);
@@ -34,9 +34,9 @@ namespace BackEndFormation.Controllers.Tests
 
             Assert.IsNotNull(okResult?.Value);
             Assert.IsInstanceOfType<SelfieDto>(okResult.Value);
-            SelfieDto? addedSelfie = okResult.Value as SelfieDto;
-            Assert.IsNotNull(addedSelfie);
-            Assert.IsTrue(addedSelfie.Id > 0);
+            SelfieDto? addedSelfieDto = okResult.Value as SelfieDto;
+            Assert.IsNotNull(addedSelfieDto);
+            Assert.IsTrue(addedSelfieDto.Id == expectedSelfieDto.Id && addedSelfieDto.Title == expectedSelfieDto.Title && addedSelfieDto.Wookie.Id == expectedSelfieDto.Wookie.Id);
         }
 
         [TestMethod()]

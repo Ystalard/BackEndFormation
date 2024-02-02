@@ -29,9 +29,11 @@ namespace BackEndFormation.Controllers
             return this.Ok(model);
         }
 
-        public IActionResult AddOne(Selfie selfie)
+        [HttpPost]
+        public IActionResult AddOne(SelfieDto selfie)
         {
-            return this.Ok(new SelfieDto() { Id = selfie.Id});
+            var model = new SelfieDto() { Id = selfie.Id, Title = selfie.Title, Wookie = new Wookie { Id = selfie.Wookie.Id, Surname = selfie.Wookie.Surname } };
+            return this.Ok(model);
         }
         #endregion
     }
