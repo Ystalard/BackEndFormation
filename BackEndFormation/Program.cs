@@ -12,8 +12,7 @@ builder.Services.AddDbContext<SelfiesContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SelfiesDatabase"), sqlOptions => {});
 });
 
-// inform the services which class to inject in place of the interface
-builder.Services.AddTransient<ISelfieRepository, DefaultSelfieRepository>();
+builder.Services.AddScoped<ISelfieRepository, DefaultSelfieRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
