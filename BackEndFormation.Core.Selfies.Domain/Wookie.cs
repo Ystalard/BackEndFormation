@@ -10,7 +10,7 @@ namespace BackEndFormation.Core.Selfies.Domain
     public  class Wookie
     {
         #region properties
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public required string Surname { get; set; }
 
         [JsonIgnore]

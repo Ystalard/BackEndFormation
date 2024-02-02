@@ -5,7 +5,7 @@
         #region properties
         public int NbSelfiesFromWookie { get; set; }
         public required string Title { get; set; }
-        public required int WookieId { get; set; }
+        public int WookieId { get; set; }
         #endregion
     }
 }

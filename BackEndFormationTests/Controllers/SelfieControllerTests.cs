@@ -26,7 +26,14 @@ namespace BackEndFormation.Controllers.Tests
             Mock<IUnitOfWork> UnitOfWork = new();
 
             mockRepository.Setup(item => item.UnitOfWork).Returns(UnitOfWork.Object);
-            mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = 4, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, ImagePath = "imagePath"  });
+
+            var expectedList = new List<Selfie>()
+            {
+                new Selfie {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
+                new Selfie {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
+            };
+            mockRepository.Setup(item => item.GetAll()).Returns(expectedList);
+            mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = expectedList.Max(item => item.Id) + 1, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, ImagePath = "imagePath"  });
             SelfieDto expectedSelfieDto = new() { Title = "title 1", ImagePath = "imagePath", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
             //Act
             var controller = new SelfieController(mockRepository.Object);
@@ -41,7 +48,7 @@ namespace BackEndFormation.Controllers.Tests
             Assert.IsInstanceOfType<SelfieDto>(okResult.Value);
             SelfieDto? addedSelfieDto = okResult.Value as SelfieDto;
             Assert.IsNotNull(addedSelfieDto);
-            Assert.IsTrue(addedSelfieDto.Id == expectedSelfieDto.Id && addedSelfieDto.Title == expectedSelfieDto.Title && addedSelfieDto.Wookie.Id == expectedSelfieDto.Wookie.Id);
+            Assert.IsTrue(addedSelfieDto.Id == expectedList.Max(item => item.Id) + 1 && addedSelfieDto.Title == expectedSelfieDto.Title && addedSelfieDto.Wookie.Id == expectedSelfieDto.Wookie.Id);
         }
 
         [TestMethod()]
