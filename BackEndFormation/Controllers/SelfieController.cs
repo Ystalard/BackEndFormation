@@ -28,6 +28,11 @@ namespace BackEndFormation.Controllers
             var model = selfiesList.Select(item => new SelfieResumeDto() { Title = item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
             return this.Ok(model);
         }
+
+        public IActionResult AddOne(Selfie selfie)
+        {
+            return this.Ok(new SelfieDto() { Id = selfie.Id});
+        }
         #endregion
     }
 
