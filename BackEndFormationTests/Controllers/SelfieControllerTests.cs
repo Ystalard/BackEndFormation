@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using BackEndFormation.Application.DTOs;
 using Xunit;
+using BackEndFormation.Core.FrameWork;
 
 namespace BackEndFormation.Controllers.Tests
 {
@@ -22,7 +23,11 @@ namespace BackEndFormation.Controllers.Tests
         {
             //Arrange
             Mock<ISelfieRepository> mockRepository = new();
-            SelfieDto expectedSelfieDto = new() { Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
+            Mock<IUnitOfWork> UnitOfWork = new();
+
+            mockRepository.Setup(item => item.UnitOfWork).Returns(UnitOfWork.Object);
+            mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = 4, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, ImagePath = "imagePath"  });
+            SelfieDto expectedSelfieDto = new() { Title = "title 1", ImagePath = "imagePath", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
             //Act
             var controller = new SelfieController(mockRepository.Object);
             var result = controller.AddOne(expectedSelfieDto);

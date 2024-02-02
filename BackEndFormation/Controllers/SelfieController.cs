@@ -30,10 +30,25 @@ namespace BackEndFormation.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOne(SelfieDto selfie)
+        public IActionResult AddOne(SelfieDto selfieDto)
         {
-            var model = new SelfieDto() { Id = selfie.Id, Title = selfie.Title, Wookie = new Wookie { Id = selfie.Wookie.Id, Surname = selfie.Wookie.Surname } };
-            return this.Ok(model);
+            IActionResult result = this.BadRequest();
+            Selfie AddedSelfie = this._repository.AddOne(new Selfie
+            {
+                Title = selfieDto.Title,
+                ImagePath = selfieDto.ImagePath,
+                Wookie = selfieDto.Wookie
+            });
+
+            _repository.UnitOfWork.SaveChanges();
+
+            if(AddedSelfie != null)
+            {
+                selfieDto.Id = AddedSelfie.Id;
+                result = this.Ok(selfieDto);
+            }
+
+            return result;
         }
         #endregion
     }

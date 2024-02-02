@@ -32,6 +32,11 @@ namespace BackEndFormation.Core.Selfies.Infrastructures.Repositories
         {
             return _context.Selfies.Include(item => item.Wookie).ToList();
         }
+
+        public Selfie AddOne(Selfie item)
+        {
+            return this._context.Selfies.Add(item).Entity;
+        }
         #endregion
     }
 }
