@@ -16,7 +16,7 @@ namespace BackEndFormation.Core.Selfies.Domain
         /// Get all the selfies
         /// </summary>
         /// <returns></returns>
-        ICollection<Selfie> GetAll();
+        ICollection<Selfie> GetAll(int? wookieId);
 
         /// <summary>
         /// Adds one selfie in DB

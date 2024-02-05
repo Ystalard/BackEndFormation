@@ -22,9 +22,9 @@ namespace BackEndFormation.Controllers
 
         #region public methods
         [HttpGet]
-        public IActionResult GetAll([FromQuery] int? wookieId = null)
+        public IActionResult GetAll([FromQuery] int? wookieId)
         {
-            var selfiesList = this._repository.GetAll();
+            var selfiesList = this._repository.GetAll(wookieId);
             var model = selfiesList.Select(item => new SelfieResumeDto() { Title = item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
             return this.Ok(model);
         }

@@ -28,9 +28,9 @@ namespace BackEndFormation.Core.Selfies.Infrastructures.Repositories
         #endregion
 
         #region public methods
-        public ICollection<Selfie> GetAll()
+        public ICollection<Selfie> GetAll(int? wookieId)
         {
-            return _context.Selfies.Include(item => item.Wookie).ToList();
+            return _context.Selfies.Include(item => item.Wookie).Where(item => wookieId.HasValue ? item.Wookie.Id == wookieId.Value : true).ToList();
         }
 
         public Selfie AddOne(Selfie item)
