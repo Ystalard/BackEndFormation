@@ -14,9 +14,14 @@ namespace BackEndFormation.Controllers
     {
         #region Fields
         private readonly ISelfieRepository _repository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         #endregion
         #region Constructor
-        public SelfieController(ISelfieRepository repository) => _repository = repository;
+        public SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment)
+        {
+            _repository = repository;
+            _webHostEnvironment = webHostEnvironment;
+        }
 
         #endregion
 
@@ -33,9 +38,18 @@ namespace BackEndFormation.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPicture(IFormFile picture)
         {
-            using var stream = new StreamReader(picture.OpenReadStream());
+            string filePath = Path.Combine(this._webHostEnvironment.ContentRootPath, @"images\selfies");
 
-            var content = await stream.ReadToEndAsync();
+            if(!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+
+            filePath = Path.Combine(filePath, picture.FileName);
+            using var stream = new FileStream(filePath, FileMode.OpenOrCreate);
+            await picture.CopyToAsync(stream);
+
+            
             return this.Ok();
         }
 
