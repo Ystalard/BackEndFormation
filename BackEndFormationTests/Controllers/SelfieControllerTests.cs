@@ -66,7 +66,7 @@ namespace BackEndFormation.Controllers.Tests
             var controller = new SelfieController(repositoryMock.Object);
 
             //act
-            var result = controller.Get();
+            var result = controller.GetAll();
 
             // assert
             Assert.IsNotNull(result);
