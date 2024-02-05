@@ -31,11 +31,11 @@ namespace BackEndFormation.Controllers
 
         [Route("photos")]
         [HttpPost]
-        public async Task<IActionResult> AddPicture()
+        public async Task<IActionResult> AddPicture(IFormFile picture)
         {
-            using var stream = new StreamReader(this.Request.Body);
-            var content = await stream.ReadToEndAsync();
+            using var stream = new StreamReader(picture.OpenReadStream());
 
+            var content = await stream.ReadToEndAsync();
             return this.Ok();
         }
 
