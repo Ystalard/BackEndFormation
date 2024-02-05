@@ -24,5 +24,12 @@ namespace BackEndFormation.Core.Selfies.Domain
         /// <param name="item"></param>
         /// <returns></returns>
         Selfie AddOne(Selfie item);
+
+        /// <summary>
+        /// Add one picture in DB
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        Picture AddOnePicture(string url);
     }
 }

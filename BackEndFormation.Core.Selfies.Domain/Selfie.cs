@@ -7,6 +7,9 @@
         public required string Title { get; set; }
         public string? ImagePath { get; set; }
         public required Wookie Wookie { get; set; }
+
+        public int PicutreId { get; set; }
+        public Picture? Picture { get; set; }
         #endregion
     }
 }

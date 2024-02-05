@@ -37,6 +37,14 @@ namespace BackEndFormation.Core.Selfies.Infrastructures.Repositories
         {
             return this._context.Selfies.Add(item).Entity;
         }
+
+        public Picture AddOnePicture(string url)
+        {
+            return this._context.Pictures.Add(new Picture()
+            {
+                Url = url
+            }).Entity;
+        }
         #endregion
     }
 }

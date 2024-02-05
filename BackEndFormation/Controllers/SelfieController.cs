@@ -49,8 +49,9 @@ namespace BackEndFormation.Controllers
             using var stream = new FileStream(filePath, FileMode.OpenOrCreate);
             await picture.CopyToAsync(stream);
 
-            
-            return this.Ok();
+            var itemFile = this._repository.AddOnePicture(filePath);
+            _repository.UnitOfWork.SaveChanges();
+            return this.Ok(itemFile);
         }
 
         [HttpPost]
