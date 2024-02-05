@@ -29,6 +29,16 @@ namespace BackEndFormation.Controllers
             return this.Ok(model);
         }
 
+        [Route("photos")]
+        [HttpPost]
+        public async Task<IActionResult> AddPicture()
+        {
+            using var stream = new StreamReader(this.Request.Body);
+            var content = await stream.ReadToEndAsync();
+
+            return this.Ok();
+        }
+
         [HttpPost]
         public IActionResult AddOne(SelfieDto selfieDto)
         {
