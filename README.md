@@ -69,7 +69,7 @@ Migration
 Instead of creating the DB in order to fit the context of our code, we can consider the context to be the reference and migrate it to the DB. This avoid to be dependent of the type of DB(MongoDB, Microsoft SQL server, Oracle, etc...)
 For this, we can use the dotnet tool cli (command line interface). All the packages are referenced here: https://www.nuget.org/packages?packagetype=dotnettool
 When it comes to migration we shall think of dotnet ef: https://www.nuget.org/packages/dotnet-ef
-1. Install dotnet ef: dotnet tool install --global dotnet-ef --version 8.0.1
+1. Install dotnet ef: ```dotnet tool install --global dotnet-ef --version 8.0.1```
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/3ffc1307-1bf5-481e-ac7a-3fa8e7fe11dd)
 
 You will notice an issue when trying to list the available migrations through this comand: dotnet eg migrations list:
@@ -86,15 +86,18 @@ When executing the command 'dotnet eg migrations list' in Infrastructures projec
 
 This will be handled on the next commit by implementing the IDesignTimeDbContextFactory interface. For more details, you can check: https://learn.microsoft.com/fr-fr/ef/core/cli/dbcontext-creation?tabs=dotnet-core-cli#from-a-design-time-factory
 
-Once the design interface is created we can start the migration process first by initializing the migration: dotnet ef migrations add InitDatabase --project=..\BackEndFormation.Core.Selfies.Data.Migration:
+Once the design interface is created we can start the migration process first by initializing the migration: ```dotnet ef migrations add InitDatabase --project=..\BackEndFormation.Core.Selfies.Data.Migration```:
 1. the infrastructure project must reference the migration project in order to the dotnet ef command line to be able to access this folder
 2. then, this reference of migration in infrastructure project must be removed as migration project will have a reference to infrastructure.
 3. remove the table create in sql server management studio
 4. generate the db from the migration:
 
-   a. cd BackEndFormation.Core.Selfies.Infrastructures
+   a. ```cd BackEndFormation.Core.Selfies.Infrastructures```
    
-   b. dotnet ef database update: if it can't find the assembly then check where is the folder where this command execute the build and past the dll directly in this folder
+   b. ```dotnet ef database update```: if it can't find the assembly then check where is the folder where this command execute the build and past the dll directly in this folder
    
+Update a migration
 
+when a new property is added to a data.domain class then it must be added to the migration with below comand.
+<br />```dotnet ef migrations add AddDescription --startup-project . --project=..\BackEndFormation.Core.Selfies.Data.Migration```
 
