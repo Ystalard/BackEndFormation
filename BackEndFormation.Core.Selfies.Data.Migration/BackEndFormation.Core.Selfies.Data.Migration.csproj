@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <BaseOutputPath>..\BackEndFormation.Core.Selfies.Infrastructures\bin\$(Configuration)</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
