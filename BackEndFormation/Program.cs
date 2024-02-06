@@ -1,5 +1,5 @@
 using BackEndFormation.Core.Selfies.Domain;
-using BanckEndFormation.Core.Selfies.Infrastructures.Data;
+using BackEndFormation.Core.Selfies.Infrastructures.Data;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
 using Microsoft.EntityFrameworkCore;
 using BackEndFormation.ExtensionMethods;

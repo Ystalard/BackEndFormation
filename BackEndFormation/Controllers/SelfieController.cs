@@ -1,6 +1,6 @@
 ﻿using BackEndFormation.Application.DTOs;
 using BackEndFormation.Core.Selfies.Domain;
-using BanckEndFormation.Core.Selfies.Infrastructures.Data;
+using BackEndFormation.Core.Selfies.Infrastructures.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,18 +10,14 @@ namespace BackEndFormation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SelfieController : ControllerBase
+    public class SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment) : ControllerBase
     {
         #region Fields
-        private readonly ISelfieRepository _repository;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ISelfieRepository _repository = repository;
+        private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
+
         #endregion
         #region Constructor
-        public SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment)
-        {
-            _repository = repository;
-            _webHostEnvironment = webHostEnvironment;
-        }
 
         #endregion
 

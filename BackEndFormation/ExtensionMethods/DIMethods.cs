@@ -1,6 +1,6 @@
 ﻿using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
-using BanckEndFormation.Core.Selfies.Infrastructures.Data;
+using BackEndFormation.Core.Selfies.Infrastructures.Data;
 
 namespace BackEndFormation.ExtensionMethods
 {

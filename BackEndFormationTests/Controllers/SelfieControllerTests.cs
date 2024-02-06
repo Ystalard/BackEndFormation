@@ -29,8 +29,8 @@ namespace BackEndFormation.Controllers.Tests
 
             var expectedList = new List<Selfie>()
             {
-                new Selfie {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
-                new Selfie {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
+                new() {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
+                new() {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
             };
             mockRepository.Setup(item => item.GetAll(null)).Returns(expectedList);
             mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = expectedList.Max(item => item.Id) + 1, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, ImagePath = "imagePath"  });
@@ -57,8 +57,8 @@ namespace BackEndFormation.Controllers.Tests
             //arrange
             var expectedList = new List<Selfie>()
             {
-                new Selfie {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
-                new Selfie {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
+                new() {Id = 1, Title = "title 1", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } },
+                new() {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
             };
 
             Mock<ISelfieRepository> repositoryMock = new();
@@ -88,8 +88,8 @@ namespace BackEndFormation.Controllers.Tests
             int expectedId = 1;
             var expectedList = new List<Selfie>()
             {
-                new Selfie {Id = 1, Title = "title 1", Wookie = new Wookie { Id = expectedId, Surname = "wookie 1" } },
-                new Selfie {Id = 2, Title = "title 2", Wookie = new Wookie { Id = expectedId, Surname = "wookie 1" } }
+                new() {Id = 1, Title = "title 1", Wookie = new Wookie { Id = expectedId, Surname = "wookie 1" } },
+                new() {Id = 2, Title = "title 2", Wookie = new Wookie { Id = expectedId, Surname = "wookie 1" } }
             };
 
             Mock<ISelfieRepository> repositoryMock = new();
