@@ -33,8 +33,8 @@ namespace BackEndFormation.Controllers.Tests
                 new() {Id = 2, Title = "title 2", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } }
             };
             mockRepository.Setup(item => item.GetAll(null)).Returns(expectedList);
-            mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = expectedList.Max(item => item.Id) + 1, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, ImagePath = "imagePath"  });
-            SelfieDto expectedSelfieDto = new() { Title = "title 1", ImagePath = "imagePath", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
+            mockRepository.Setup(item => item.AddOne(It.IsAny<Selfie>())).Returns(new Selfie() { Id = expectedList.Max(item => item.Id) + 1, Title = "title", Wookie = new() { Id = 5, Surname = "wookieSurname"}, Description = "a description", ImagePath = "imagePath"  });
+            SelfieDto expectedSelfieDto = new() { Title = "title 1", ImagePath = "imagePath", Description = "a description", Wookie = new Wookie { Id = 1, Surname = "wookie 1" } };
             //Act
             var controller = new SelfieController(mockRepository.Object);
             var result = controller.AddOne(expectedSelfieDto);

@@ -58,7 +58,8 @@ namespace BackEndFormation.Controllers
             {
                 Title = selfieDto.Title,
                 ImagePath = selfieDto.ImagePath,
-                Wookie = selfieDto.Wookie
+                Wookie = selfieDto.Wookie,
+                Description = selfieDto.Description
             });
 
             _repository.UnitOfWork.SaveChanges();
