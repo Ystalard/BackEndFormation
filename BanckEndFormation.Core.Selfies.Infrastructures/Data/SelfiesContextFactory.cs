@@ -19,7 +19,7 @@ namespace BackEndFormation.Core.Selfies.Infrastructures.Data
             IConfigurationRoot configurationRoot = configurationBuilder.Build();
 
             DbContextOptionsBuilder dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseSqlServer(configurationRoot.GetConnectionString("SelfiesDatabase"));
+            dbContextOptionsBuilder.UseSqlServer(configurationRoot.GetConnectionString("SelfiesDatabase"), b => b.MigrationsAssembly("BackEndFormation.Core.Selfies.Data.Migration"));
 
             SelfiesContext context = new(dbContextOptionsBuilder.Options);
 

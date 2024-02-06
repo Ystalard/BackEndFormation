@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BackEndFormation.Core.FrameWork\BackEndFormation.Core.FrameWork.csproj" />
+    <ProjectReference Include="..\BackEndFormation.Core.Selfies.Data.Migration\BackEndFormation.Core.Selfies.Data.Migration.csproj" />
     <ProjectReference Include="..\BackEndFormation.Core.Selfies.Domain\BackEndFormation.Core.Selfies.Domain.csproj" />
   </ItemGroup>
 

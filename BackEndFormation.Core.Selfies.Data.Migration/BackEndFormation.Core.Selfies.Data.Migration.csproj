@@ -13,8 +13,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BanckEndFormation.Core.Selfies.Infrastructures\BackEndFormation.Core.Selfies.Infrastructures.csproj" />
-  </ItemGroup>
-
 </Project>
