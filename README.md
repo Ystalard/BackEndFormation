@@ -86,6 +86,15 @@ When executing the command 'dotnet eg migrations list' in Infrastructures projec
 
 This will be handled on the next commit by implementing the IDesignTimeDbContextFactory interface. For more details, you can check: https://learn.microsoft.com/fr-fr/ef/core/cli/dbcontext-creation?tabs=dotnet-core-cli#from-a-design-time-factory
 
+Once the design interface is created we can start the migration process first by initializing the migration: dotnet ef migrations add InitDatabase --project=..\BackEndFormation.Core.Selfies.Data.Migration:
+1. the infrastructure project must reference the migration project in order to the dotnet ef command line to be able to access this folder
+2. then, this reference of migration in infrastructure project must be removed as migration project will have a reference to infrastructure.
+3. remove the table create in sql server management studio
+4. generate the db from the migration:
 
+   a. cd BackEndFormation.Core.Selfies.Infrastructures
+   
+   b. dotnet ef database update: if it can't find the assembly then check where is the folder where this command execute the build and past the dll directly in this folder
+   
 
 
