@@ -64,5 +64,28 @@ Create a new table
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/e21d8147-9717-42fd-8e3b-01e94d513243)
 
 
+Migration
+
+Instead of creating the DB in order to fit the context of our code, we can consider the context to be the reference and migrate it to the DB. This avoid to be dependent of the type of DB(MongoDB, Microsoft SQL server, Oracle, etc...)
+For this, we can use the dotnet tool cli (command line interface). All the packages are referenced here: https://www.nuget.org/packages?packagetype=dotnettool
+When it comes to migration we shall think of dotnet ef: https://www.nuget.org/packages/dotnet-ef
+1. Install dotnet ef: dotnet tool install --global dotnet-ef --version 8.0.1
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/3ffc1307-1bf5-481e-ac7a-3fa8e7fe11dd)
+
+You will notice an issue when trying to list the available migrations through this comand: dotnet eg migrations list:
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/06d95f27-a5af-471b-b987-362e3ae916b5)
+So, adding the Microsoft.entityFrameWorkCore.Design to the Migration projet is required. You can add it in the BackendFormation.Core.Selfies.Data.Migration through nuget package interface on Visual Studio.
+Then, if you get the below issue it means you are trying to access the DbContext on the migration project:
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/72d24d9e-6c42-4dae-bae6-0b907aaea0f8)
+But it can't be done in th emigration project as the DbContext is defined in the Infrastructures project. we created two project to split the code properly:
+1. Migration project: to handle the migration of the infrastructure into the DB
+2. Infrasctructures project: to set up the context manipulated by the ORM. It is this project which handle the DB context.
+
+When executing the command 'dotnet eg migrations list' in Infrastructures project you should get the below issue:
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/ef67b75f-7a02-4102-ac1b-c05b67bf472f)
+
+This will be handled on the next commit by implementing the IDesignTimeDbContextFactory interface. For more details, you can check: https://learn.microsoft.com/fr-fr/ef/core/cli/dbcontext-creation?tabs=dotnet-core-cli#from-a-design-time-factory
+
+
 
 
