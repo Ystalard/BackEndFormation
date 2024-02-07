@@ -15,6 +15,7 @@ builder.Services.AddDbContext<SelfiesContext>(options =>
 });
 
 builder.Services.AddInjections();
+builder.Services.AddCustomSecurity();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -29,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors(SecurityMethods.DEFAULT_POLICY);
 app.UseAuthorization();
 
 app.MapControllers();
