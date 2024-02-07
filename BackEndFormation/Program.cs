@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(SecurityMethods.DEFAULT_POLICY);
+app.UseCors(SecurityMethods.DEFAULT_POLICY2);
 app.UseAuthorization();
 
 app.MapControllers();

@@ -7,6 +7,7 @@
     {
         #region Constants
         public const string DEFAULT_POLICY = "DEFAULT_POLICY";
+        public const string DEFAULT_POLICY2 = "DEFAULT_POLICY2";
         #endregion
         #region public methods
         /// <summary>
@@ -20,6 +21,13 @@
                 options.AddPolicy(DEFAULT_POLICY, builder =>
                 {
                     builder.WithOrigins("http://127.0.0.1:5500")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+                
+                options.AddPolicy(DEFAULT_POLICY2, builder =>
+                {
+                    builder.WithOrigins("http://127.0.0.1:5501")
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                 });

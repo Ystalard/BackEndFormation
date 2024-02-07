@@ -1,6 +1,8 @@
 ﻿using BackEndFormation.Application.DTOs;
 using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Data;
+using BackEndFormation.ExtensionMethods;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ namespace BackEndFormation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(SecurityMethods.DEFAULT_POLICY)]
     public class SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment) : ControllerBase
     {
         #region Fields
