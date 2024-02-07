@@ -3,6 +3,7 @@ using BackEndFormation.Core.Selfies.Infrastructures.Data;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
 using Microsoft.EntityFrameworkCore;
 using BackEndFormation.ExtensionMethods;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddDbContext<SelfiesContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SelfiesDatabase"), sqlOptions => {});
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedEmail = true;
+}).AddEntityFrameworkStores<SelfiesContext>();
 
 builder.Services.AddInjections();
 builder.Services.AddCustomSecurity(builder.Configuration);
