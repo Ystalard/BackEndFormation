@@ -1,6 +1,7 @@
 ﻿using BackEndFormation.Core.FrameWork;
 using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Data.TypeConfigurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BackEndFormation.Core.Selfies.Infrastructures.Data
 {
-    public class SelfiesContext(DbContextOptions options) : DbContext(options), IUnitOfWork
+    public class SelfiesContext(DbContextOptions options) : IdentityDbContext(options), IUnitOfWork
     {
         #region Internal methods
         protected override void OnModelCreating(ModelBuilder modelBuilder)
