@@ -12,12 +12,12 @@ namespace BackEndFormation.Controllers
     public class AuthenticateController : ControllerBase
     {
         #region Fields
-        private UserManager<IdentityUser>? _userManager = null;
-        private IConfigurationManager _configuration;
+        private UserManager<IdentityUser> _userManager;
+        private IConfiguration _configuration;
         #endregion
 
         #region Constructors
-        public AuthenticateController(UserManager<IdentityUser> userManager, IConfigurationManager configuration)
+        public AuthenticateController(UserManager<IdentityUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _configuration = configuration;
@@ -26,14 +26,36 @@ namespace BackEndFormation.Controllers
 
         #region public methods
         [HttpPost]
-        public async IActionResult Login([FromBody] AuthenticateUserDTo dtoUser)
+        [Route("register")]
+        public async Task<IActionResult> Register([FromBody] AuthenticateUserDTo dtoUser)
         {
-            IActionResult result = this.BadRequest();
-            if (_userManager == null)
+            IActionResult result = BadRequest();
+            IdentityUser user = new()
+            {
+                UserName = dtoUser.Name,
+                Email = dtoUser.Login
+            };
+
+            if(dtoUser.Password == null)
             {
                 return result;
             }
 
+            IdentityResult identityResult = await _userManager.CreateAsync(user, dtoUser.Password);
+            
+            if(identityResult.Succeeded)
+            {
+                dtoUser.Token = GenerateJwtToken(user);
+                result = Ok(dtoUser);
+            }
+
+            return result;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] AuthenticateUserDTo dtoUser)
+        {
+            IActionResult result = this.BadRequest();
 
             IdentityUser? user = await _userManager.FindByEmailAsync(dtoUser.Login);
             if(user != null && dtoUser.Password != null)
