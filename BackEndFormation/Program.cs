@@ -31,6 +31,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(SecurityMethods.DEFAULT_POLICY);
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
