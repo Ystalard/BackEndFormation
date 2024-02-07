@@ -12,7 +12,6 @@ namespace BackEndFormation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors(SecurityMethods.DEFAULT_POLICY)]
     public class SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment) : ControllerBase
     {
         #region Fields
@@ -26,7 +25,6 @@ namespace BackEndFormation.Controllers
 
         #region public methods
         [HttpGet]
-        [DisableCors()]
         public IActionResult GetAll([FromQuery] int? wookieId)
         {
             var selfiesList = this._repository.GetAll(wookieId);

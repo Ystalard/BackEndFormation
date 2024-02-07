@@ -7,36 +7,23 @@
     {
         #region Constants
         public const string DEFAULT_POLICY = "DEFAULT_POLICY";
-        public const string DEFAULT_POLICY2 = "DEFAULT_POLICY2";
-        public const string DEFAULT_POLICY3 = "DEFAULT_POLICY3";
         #endregion
         #region public methods
         /// <summary>
         /// Add cors and jwt configuration
         /// </summary>
         /// <param name="services"></param>
-        public static void AddCustomSecurity(this IServiceCollection services)
+        public static void AddCustomSecurity(this IServiceCollection services, IConfigurationManager configuration)
         {
             services.AddCors(options =>
             {
                 options.AddPolicy(DEFAULT_POLICY, builder =>
                 {
-                    builder.WithOrigins("http://127.0.0.1:5500")
+#pragma warning disable CS8604 // Possible null reference argument.
+                    builder.WithOrigins(configuration["Cors:Policy:Origin"])
                            .AllowAnyHeader()
                            .AllowAnyMethod();
-                });
-                
-                options.AddPolicy(DEFAULT_POLICY2, builder =>
-                {
-                    builder.WithOrigins("http://127.0.0.1:5501")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
-                });
-                options.AddPolicy(DEFAULT_POLICY3, builder =>
-                {
-                    builder.WithOrigins("http://127.0.0.1:5500")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
+#pragma warning restore CS8604 // Possible null reference argument.
                 });
             });
         }
