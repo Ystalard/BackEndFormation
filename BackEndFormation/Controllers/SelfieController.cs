@@ -26,6 +26,7 @@ namespace BackEndFormation.Controllers
 
         #region public methods
         [HttpGet]
+        [EnableCors(SecurityMethods.DEFAULT_POLICY2)]
         public IActionResult GetAll([FromQuery] int? wookieId)
         {
             var selfiesList = this._repository.GetAll(wookieId);
