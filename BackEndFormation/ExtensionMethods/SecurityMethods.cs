@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using BackEndFormation.Core.Selfies.Domain;
+using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 
@@ -20,6 +22,7 @@ namespace BackEndFormation.ExtensionMethods
         public static void AddCustomSecurity(this IServiceCollection services, IConfigurationManager configuration)
         {
             services.AddCustomCors(configuration);
+            services.AddCustomAuthentication(configuration);
         }
 
         public static void AddCustomAuthentication(this IServiceCollection services, IConfigurationManager configuration)
