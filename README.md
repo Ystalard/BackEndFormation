@@ -113,6 +113,18 @@ There are 4 main web server hosts (without considering the cloud servers):
 The threshold is the minimum level of log to be displayed, it is set to the lowest level by default and can be changed to a higher level from `Logging:LogLevel:Default` in appsettings.json file.
 Also, the appsettings.json file can be overriden by the appsettings.Development.json file or any other environment file. This allows to have the same configuration for all the environment and to override it for a specific environment.
 
-
+### Log providers
+1. Console: the log is displayed in the console
+1. Debug: the log is displayed in the debug window
+1. EventSource: the log is displayed in the event viewer
+1. EventLog: the log is displayed in the event log
+1. TraceSource: the log is displayed in the trace source
+1. AzureAppServicesFile: the log is displayed in the azure app service file
+1. AzureAppServicesBlob: the log is displayed in the azure app service blob
+1. ApplicationInsights: the log is displayed in the application insights
+1. Seq: the log is displayed in the seq
+1. Elasticsearch: the log is displayed in the elasticsearch
+1. email: the log is sent by email
+1. etc...
 
 
