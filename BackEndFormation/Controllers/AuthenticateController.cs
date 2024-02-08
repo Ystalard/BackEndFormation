@@ -59,24 +59,31 @@ namespace BackEndFormation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] AuthenticateUserDTo dtoUser)
         {
-            throw new Exception("Test");
-
             IActionResult result = this.BadRequest();
-
-            IdentityUser? user = await _userManager.FindByEmailAsync(dtoUser.Login);
-            if(user != null && dtoUser.Password != null)
+            try
             {
-                bool verif = await _userManager.CheckPasswordAsync(user, dtoUser.Password);
-                if(verif && user.Email != null)
+                throw new Exception("Test");
+
+                IdentityUser? user = await _userManager.FindByEmailAsync(dtoUser.Login);
+                if (user != null && dtoUser.Password != null)
                 {
-                    result = Ok(new AuthenticateUserDTo()
+                    bool verif = await _userManager.CheckPasswordAsync(user, dtoUser.Password);
+                    if (verif && user.Email != null)
                     {
-                        Login = user.Email,
-                        Name = user.UserName,
-                        Token = GenerateJwtToken(user)
-                    });
+                        result = Ok(new AuthenticateUserDTo()
+                        {
+                            Login = user.Email,
+                            Name = user.UserName,
+                            Token = GenerateJwtToken(user)
+                        });
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                result = Problem(ex.Message);  
+            }
+
             return result;
         }
         #endregion
