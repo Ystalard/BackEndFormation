@@ -1,4 +1,5 @@
 ﻿using BackEndFormation.Core.Selfies.Domain;
+using BackEndFormation.Core.Selfies.Infrastructures.Configuration;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,9 @@ namespace BackEndFormation.ExtensionMethods
 
         public static void AddCustomAuthentication(this IServiceCollection services, IConfigurationManager configuration)
         {
+            SecurityOptions securityOption = new();
+            configuration.GetSection("Jwt").Bind(securityOption);
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -36,7 +40,7 @@ namespace BackEndFormation.ExtensionMethods
             {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 #pragma warning disable CS8604 // Possible null reference argument.
-                string myKey = configuration["Jwt:Key"];
+                string myKey = securityOption.Key;
                 options.SaveToken = true;
 
                 options.TokenValidationParameters = new()
@@ -52,7 +56,6 @@ namespace BackEndFormation.ExtensionMethods
             });
 
         }
-
 
         public static void AddCustomCors(this IServiceCollection services, IConfigurationManager configuration)
         {
