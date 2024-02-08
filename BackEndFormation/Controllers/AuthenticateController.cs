@@ -59,6 +59,8 @@ namespace BackEndFormation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] AuthenticateUserDTo dtoUser)
         {
+            throw new Exception("Test");
+
             IActionResult result = this.BadRequest();
 
             IdentityUser? user = await _userManager.FindByEmailAsync(dtoUser.Login);
