@@ -80,3 +80,27 @@ When a new property is added to a `data.domain` class then it must be added to t
      - set the applicationUrl to https://localhost:\<port\><br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/7fa61afd-505a-4cdf-a745-2f9f71448839)
 
 7. Start the server: ```dotnet run``` 
+
+## Publication
+
+### Host servers
+There are 4 main web server hosts (without considering the cloud servers):
+1. Apache: most of the website uses it
+2. Tomcat: simplification of apache
+3. IIS: originally for microsoft group, since .NET open source it tends to spread among others
+4. Nginx: used by the biggest website and having most of the traffic
+
+## Publish IIS in a folder with VS 2022
+1. Right-clik on your website project > Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/a14c230e-7a40-4721-a27d-e6c898bd1de2)
+2. Select Folder<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d453ab77-b1fb-4ec3-9295-ead692a21f7a)and follow the step
+3. Click on edit profile to modify some features:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/95ad5828-ebac-4f97-9217-db9766c6b243)
+4. Choose Deployment Mode: Self-contained to be independent from the server you aim to publish. For instance, if you need a framework then with Self-contained mode you will install it on the server when publishing. For instance:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/566dcd1c-4e6b-4860-8139-8dcb6b6e6c82)
+5. Click on save
+   - The profile of the publication can now be accessed and modify from the .pubxml file just created:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/ed4c35de-5034-483f-b563-3a4fb322978a)
+6. Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d6e457c3-940b-404a-88a6-46eabd4b726d)
+
+
+
+
+
+
