@@ -4,6 +4,7 @@ using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
 using Microsoft.EntityFrameworkCore;
 using BackEndFormation.ExtensionMethods;
 using Microsoft.AspNetCore.Identity;
+using BackEndFormation.Core.Selfies.Infrastructures.Loggers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,11 @@ builder.Services.AddCustomSecurity(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddProvider(new CustomLoggerProvider());
+});
 
 var app = builder.Build();
 
