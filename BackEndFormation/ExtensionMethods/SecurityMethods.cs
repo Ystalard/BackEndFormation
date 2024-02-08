@@ -59,12 +59,16 @@ namespace BackEndFormation.ExtensionMethods
 
         public static void AddCustomCors(this IServiceCollection services, IConfigurationManager configuration)
         {
+            CorsOptions.Policy policy = new();
+            configuration.GetSection("Cors:Policy").Bind(policy);
+
+
             services.AddCors(options =>
             {
                 options.AddPolicy(DEFAULT_POLICY, builder =>
                 {
 #pragma warning disable CS8604 // Possible null reference argument.
-                    builder.WithOrigins(configuration["Cors:Policy:Origin"])
+                    builder.WithOrigins(policy.Origin)
                            .AllowAnyHeader()
                            .AllowAnyMethod();
 #pragma warning restore CS8604 // Possible null reference argument.

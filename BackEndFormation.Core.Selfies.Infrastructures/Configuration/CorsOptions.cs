@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 namespace BackEndFormation.Core.Selfies.Infrastructures.Configuration
 {
     /// <summary>
-    /// Getting data to use in security config
+    /// Options to configure cors security
     /// </summary>
-    public class SecurityOptions
+    public class CorsOptions
     {
-        #region Properties
-        public string? Key { get; set; }
-        #endregion
+         public class Policy
+        {
+            public string? Origin { get; set; }
+        }
     }
 }
