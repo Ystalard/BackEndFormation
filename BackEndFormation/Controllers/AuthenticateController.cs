@@ -65,8 +65,6 @@ namespace BackEndFormation.Controllers
             IActionResult result = this.BadRequest();
             try
             {
-                throw new Exception("Test");
-
                 IdentityUser? user = await _userManager.FindByEmailAsync(dtoUser.Login);
                 if (user != null && dtoUser.Password != null)
                 {
