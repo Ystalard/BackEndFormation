@@ -1,6 +1,8 @@
 ﻿using BackEndFormation.Application.DTOs;
+using BackEndFormation.Core.Selfies.Infrastructures.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -12,15 +14,17 @@ namespace BackEndFormation.Controllers
     public class AuthenticateController : ControllerBase
     {
         #region Fields
-        private UserManager<IdentityUser> _userManager;
-        private IConfiguration _configuration;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IConfiguration _configuration;
+        private readonly SecurityOptions _options;
         #endregion
 
         #region Constructors
-        public AuthenticateController(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public AuthenticateController(UserManager<IdentityUser> userManager, IConfiguration configuration, IOptions<SecurityOptions> options)
         {
             _userManager = userManager;
             _configuration = configuration;
+            _options = options.Value;
         }
         #endregion
 
@@ -83,7 +87,7 @@ namespace BackEndFormation.Controllers
 
             // We get our secret from the appsettings
 #pragma warning disable CS8604 // Possible null reference argument.
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(_options.Key);
 #pragma warning restore CS8604 // Possible null reference argument.
 
             // we define our token descriptor

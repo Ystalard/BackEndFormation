@@ -21,6 +21,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 }).AddEntityFrameworkStores<SelfiesContext>();
 
 builder.Services.AddInjections();
+builder.Services.AddCustomOptions(builder.Configuration);
 builder.Services.AddCustomSecurity(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
