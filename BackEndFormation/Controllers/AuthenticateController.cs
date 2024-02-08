@@ -17,14 +17,19 @@ namespace BackEndFormation.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
         private readonly SecurityOptions _options;
+        private readonly ILogger<AuthenticateController> _logger;
         #endregion
 
         #region Constructors
-        public AuthenticateController(UserManager<IdentityUser> userManager, IConfiguration configuration, IOptions<SecurityOptions> options)
+        public AuthenticateController(ILogger<AuthenticateController> logger, UserManager<IdentityUser> userManager, IConfiguration configuration, IOptions<SecurityOptions> options)
         {
             _userManager = userManager;
             _configuration = configuration;
             _options = options.Value;
+            _logger = logger;
+
+            _logger.LogInformation("AuthenticateController created.");
+            _logger.LogDebug("AuthenticateController created. Log visible only when threshold set at Debug: it won't work on staging environment");
         }
         #endregion
 
@@ -82,6 +87,7 @@ namespace BackEndFormation.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error during login");
                 result = Problem(ex.Message);  
             }
 

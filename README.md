@@ -99,7 +99,19 @@ There are 4 main web server hosts (without considering the cloud servers):
    - The profile of the publication can now be accessed and modify from the .pubxml file just created:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/ed4c35de-5034-483f-b563-3a4fb322978a)
 6. Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d6e457c3-940b-404a-88a6-46eabd4b726d)
 
+## Log
 
+### Log levels
+1. Trace: the most detailed level
+1. Debug: the level used to debug the application
+1. Information: the level used to inform the user
+1. Warning: the level used to warn the user
+1. Error: the level used to inform the user that an error occured
+1. Critical: the level used to inform the user that a critical error occured
+1. None: the level used to disable the log
+
+The threshold is the minimum level of log to be displayed, it is set to the lowest level by default and can be changed to a higher level from `Logging:LogLevel:Default` in appsettings.json file.
+Also, the appsettings.json file can be overriden by the appsettings.Development.json file or any other environment file. This allows to have the same configuration for all the environment and to override it for a specific environment.
 
 
 
