@@ -90,7 +90,7 @@ There are 4 main web server hosts (without considering the cloud servers):
 3. IIS: originally for microsoft group, since .NET open source it tends to spread among others
 4. Nginx: used by the biggest website and having most of the traffic
 
-## Publish IIS in a folder with VS 2022
+## Publish in a folder with VS 2022
 1. Right-clik on your website project > Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/a14c230e-7a40-4721-a27d-e6c898bd1de2)
 2. Select Folder<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d453ab77-b1fb-4ec3-9295-ead692a21f7a)and follow the step
 3. Click on edit profile to modify some features:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/95ad5828-ebac-4f97-9217-db9766c6b243)
@@ -98,6 +98,21 @@ There are 4 main web server hosts (without considering the cloud servers):
 5. Click on save
    - The profile of the publication can now be accessed and modify from the .pubxml file just created:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/ed4c35de-5034-483f-b563-3a4fb322978a)
 6. Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d6e457c3-940b-404a-88a6-46eabd4b726d)
+
+## Publish from command line
+1. Open command prompt from the root of the website project
+2. run `dotnet publish -c Release`
+
+It can also be configured from command line see [the documentation](https://learn.microsoft.com/fr-fr/dotnet/core/tools/dotnet-publish#synopsis).
+But you can also publish from the command line with the configuration set from a <publishFolder>.pubxml file with this command: `dotnet publish -p:PublishProfile=<publishFolder>`
+
+## Publish on IIS with VS 2022
+1. Right-clik on your website project > Publish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/a14c230e-7a40-4721-a27d-e6c898bd1de2)
+2. Select Web Server IIS<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/0895103b-98df-4ae6-84b6-7d7ce4e7454d)
+3. Select Web Deploy
+4. Set your configuration and Finish<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/9ebcd94a-3b07-4cbb-ba5b-95384f44add3)
+
+And now your ISSProfile.pubxml file is ready!
 
 ## Log
 
