@@ -127,4 +127,5 @@ Also, the appsettings.json file can be overriden by the appsettings.Development.
 1. email: the log is sent by email
 1. etc...
 
-
+## Middleware
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/77f91ce1-7c0b-4246-88fe-a447f933fa10)
