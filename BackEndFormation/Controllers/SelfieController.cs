@@ -1,7 +1,9 @@
 ﻿using BackEndFormation.Application.DTOs;
+using BackEndFormation.Application.Queries;
 using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Data;
 using BackEndFormation.ExtensionMethods;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -15,11 +17,12 @@ namespace BackEndFormation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment) : ControllerBase
+    public class SelfieController(ISelfieRepository repository, IWebHostEnvironment webHostEnvironment, IMediator mediator) : ControllerBase
     {
         #region Fields
         private readonly ISelfieRepository _repository = repository;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
+        private readonly IMediator _mediator = mediator;
 
         #endregion
         #region Constructor
@@ -30,8 +33,7 @@ namespace BackEndFormation.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] int? wookieId)
         {
-            var selfiesList = this._repository.GetAll(wookieId);
-            var model = selfiesList.Select(item => new SelfieResumeDto() { Title = item.Title, WookieId = item.Wookie.Id, NbSelfiesFromWookie = item.Wookie.Selfies.Count }).ToList();
+            var model = _mediator.Send(new SelectAllSelfiesQuery { WookieId = wookieId }).Result;
             return this.Ok(model);
         }
 
