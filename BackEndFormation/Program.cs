@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using BackEndFormation.ExtensionMethods;
 using Microsoft.AspNetCore.Identity;
 using BackEndFormation.Core.Selfies.Infrastructures.Loggers;
+using BackEndFormation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,8 @@ if (app.Environment.IsDevelopment())
 {
 
 }
+
+app.UseMiddleware<LogRequestMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors(SecurityMethods.DEFAULT_POLICY);
