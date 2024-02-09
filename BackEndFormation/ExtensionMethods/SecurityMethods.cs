@@ -20,10 +20,12 @@ namespace BackEndFormation.ExtensionMethods
         /// Add cors and jwt configuration
         /// </summary>
         /// <param name="services"></param>
-        public static void AddCustomSecurity(this IServiceCollection services, IConfigurationManager configuration)
+        public static IServiceCollection AddCustomSecurity(this IServiceCollection services, IConfigurationManager configuration)
         {
             services.AddCustomCors(configuration);
             services.AddCustomAuthentication(configuration);
+
+            return services;
         }
 
         public static void AddCustomAuthentication(this IServiceCollection services, IConfigurationManager configuration)

@@ -1,6 +1,6 @@
 ﻿using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Repositories;
-using BackEndFormation.Core.Selfies.Infrastructures.Data;
+using System.Reflection;
 
 namespace BackEndFormation.ExtensionMethods
 {
@@ -11,9 +11,13 @@ namespace BackEndFormation.ExtensionMethods
         /// Prepare customs dependency injections
         /// </summary>
         /// <param name="builder"></param>
-        public static void AddInjections(this IServiceCollection services)
+        public static IServiceCollection AddInjections(this IServiceCollection services)
         {
             services.AddScoped<ISelfieRepository, DefaultSelfieRepository>();
+            // add mediator for CQRS
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+            return services;
         }
         #endregion
     }

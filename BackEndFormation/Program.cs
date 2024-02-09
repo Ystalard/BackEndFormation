@@ -22,9 +22,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.SignIn.RequireConfirmedEmail = true;
 }).AddEntityFrameworkStores<SelfiesContext>();
 
-builder.Services.AddInjections();
-builder.Services.AddCustomOptions(builder.Configuration);
-builder.Services.AddCustomSecurity(builder.Configuration);
+builder.Services.AddInjections()
+                .AddCustomOptions(builder.Configuration)
+                .AddCustomSecurity(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

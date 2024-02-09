@@ -11,9 +11,11 @@ namespace BackEndFormation.ExtensionMethods
         /// <summary>
         /// Add cors and jwt configuration
         ///     
-        public static void AddCustomOptions(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<SecurityOptions>(configuration.GetSection("Jwt"));
+
+            return services;
         }
         #endregion
     }
