@@ -129,3 +129,11 @@ Also, the appsettings.json file can be overriden by the appsettings.Development.
 
 ## Middleware
 ![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/77f91ce1-7c0b-4246-88fe-a447f933fa10)
+
+## Mediator
+
+A dialog box without a mediator can be represented as below:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d9cd33e1-a683-4c7c-aa50-8f70da37b9be)
+
+A mediator aims to sanitize this dialog box through a mediator which would handle the communication between each part as below:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/8a166168-8b5e-4a5a-bcb0-056e29065091)
+
+
