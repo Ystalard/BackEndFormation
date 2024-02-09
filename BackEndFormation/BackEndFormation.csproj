@@ -24,8 +24,4 @@
     <ProjectReference Include="..\BackEndFormation.Core.Selfies.Infrastructures\BackEndFormation.Core.Selfies.Infrastructures.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Commands\" />
-  </ItemGroup>
-
 </Project>

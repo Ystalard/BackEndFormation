@@ -1,4 +1,5 @@
-﻿using BackEndFormation.Application.DTOs;
+﻿using BackEndFormation.Application.Commands;
+using BackEndFormation.Application.DTOs;
 using BackEndFormation.Application.Queries;
 using BackEndFormation.Core.Selfies.Domain;
 using BackEndFormation.Core.Selfies.Infrastructures.Data;
@@ -33,7 +34,7 @@ namespace BackEndFormation.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] int? wookieId)
         {
-            var model = _mediator.Send(new SelectAllSelfiesQuery { WookieId = wookieId }).Result;
+            List<SelfieResumeDto> model = _mediator.Send(new SelectAllSelfiesQuery { WookieId = wookieId }).Result;
             return this.Ok(model);
         }
 
@@ -58,23 +59,14 @@ namespace BackEndFormation.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOne(SelfieDto selfieDto)
+        public async Task<IActionResult> AddOne(SelfieDto selfieDto)
         {
             IActionResult result = this.BadRequest();
-            Selfie AddedSelfie = this._repository.AddOne(new Selfie
-            {
-                Title = selfieDto.Title,
-                ImagePath = selfieDto.ImagePath,
-                Wookie = selfieDto.Wookie,
-                Description = selfieDto.Description
-            });
 
-            _repository.UnitOfWork.SaveChanges();
-
-            if(AddedSelfie != null)
+            SelfieDto model = await _mediator.Send(new AddSelfieCommand(selfieDto));
+            if(model != null)
             {
-                selfieDto.Id = AddedSelfie.Id;
-                result = this.Ok(selfieDto);
+                result = this.Ok(model);
             }
 
             return result;
