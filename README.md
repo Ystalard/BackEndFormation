@@ -142,4 +142,15 @@ Also, the appsettings.json file can be overriden by the appsettings.Development.
 1. email: the log is sent by email
 1. etc...
 
+## Middleware
+![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/77f91ce1-7c0b-4246-88fe-a447f933fa10)
+
+## Mediator
+
+A dialog box without a mediator can be represented as below:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/d9cd33e1-a683-4c7c-aa50-8f70da37b9be)
+
+A mediator aims to sanitize this dialog box through a mediator which would handle the communication between each part as below:<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/8a166168-8b5e-4a5a-bcb0-056e29065091)
+
+## CQRS
+CQRS means Command Query Responsibility Segregation. It is a pattern which consist in separating the command and the query in the application. The command is the action which modify the state of the application and the query is the action which read the state of the application. This pattern is used to simplify the code and to make it more readable and maintainable. It is also used to improve the performance of the application by separating the read and the write of the application.<br/>![image](https://github.com/Ystalard/BackEndFormation/assets/58308727/b94a7bc4-fef2-4a03-b87f-e65211b5f57b)
 
